@@ -63,7 +63,7 @@ class Clouds: Codable {
     }
 }
 
-class Coordinates: Codable {
+class Coordinates: NSObject, Codable {
     let lon, lat: Double
 
     init(lon: Double, lat: Double) {

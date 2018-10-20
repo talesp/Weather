@@ -23,6 +23,7 @@
 		029D869D217B6A3900AF23D1 /* WeatherAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029D869C217B6A3900AF23D1 /* WeatherAPIConfig.swift */; };
 		029D869F217B7C5300AF23D1 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029D869E217B7C5300AF23D1 /* Coordinates.swift */; };
 		029D86A1217B7F4500AF23D1 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029D86A0217B7F4500AF23D1 /* Webservice.swift */; };
+		029D86A4217B9E6D00AF23D1 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029D86A3217B9E6D00AF23D1 /* City.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		029D869C217B6A3900AF23D1 /* WeatherAPIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPIConfig.swift; sourceTree = "<group>"; };
 		029D869E217B7C5300AF23D1 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		029D86A0217B7F4500AF23D1 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
+		029D86A3217B9E6D00AF23D1 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				029D86A2217B9CE800AF23D1 /* Network */,
 				029D869E217B7C5300AF23D1 /* Coordinates.swift */,
 				029D86A0217B7F4500AF23D1 /* Webservice.swift */,
+				029D86A3217B9E6D00AF23D1 /* City.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				029D869F217B7C5300AF23D1 /* Coordinates.swift in Sources */,
 				029D8693217AF0FE00AF23D1 /* URLRequest+Resource.swift in Sources */,
 				029D8697217AF18300AF23D1 /* Resource.swift in Sources */,
+				029D86A4217B9E6D00AF23D1 /* City.swift in Sources */,
 				029D869D217B6A3900AF23D1 /* WeatherAPIConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
