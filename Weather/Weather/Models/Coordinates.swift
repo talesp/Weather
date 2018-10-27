@@ -8,9 +8,16 @@
 
 import CoreLocation
 
-extension Coordinates {
+class Coordinates: NSObject, Codable {
+    let lon, lat: Double?
+
+    init(lon: Double?, lat: Double?) {
+        self.lon = lon
+        self.lat = lat
+    }
+
     convenience init(location: CLLocationCoordinate2D) {
         self.init(lon: location.longitude, lat: location.latitude)
     }
-}
 
+}
