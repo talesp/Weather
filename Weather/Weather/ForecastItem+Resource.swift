@@ -1,5 +1,5 @@
 //
-//  ForecastCity+Resource.swift
+//  ForecastItem+Resource.swift
 //  Weather
 //
 //  Created by Tales Pinheiro De Andrade on 20/10/18.
@@ -21,23 +21,24 @@ enum SystemOfUnits {
     }
 }
 
-extension ForecastCity {
+extension ForecastItem {
 
     static private let pathURLString = "weather"
     private(set) static var baseURL: URL = WeatherAPIConfig.baseURL
     
-    static func resource(for coordinates: Coordinates, units: SystemOfUnits) -> Resource<ForecastCity> {
-        var components = URLComponents(url: ForecastCity.baseURL, resolvingAgainstBaseURL: true)
+    static func resource(for coordinates: Coordinates, units: SystemOfUnits) -> Resource<ForecastItem> {
+        var components = URLComponents(url: self.baseURL, resolvingAgainstBaseURL: true)
 
-        components?.queryItems?.append(URLQueryItem(name: "lat", value: "\(coordinates.lat)"))
-        components?.queryItems?.append(URLQueryItem(name: "lon", value: "\(coordinates.lon)"))
+        guard let lat = coordinates.lat, let lon = coordinates.lon else { fatalError() }
+        components?.queryItems?.append(URLQueryItem(name: "lat", value: "\(lat)"))
+        components?.queryItems?.append(URLQueryItem(name: "lon", value: "\(lon)"))
         switch units {
         case .imperialSystem:
             components?.queryItems?.append(URLQueryItem(name: "units", value: "imperial"))
         default:
             components?.queryItems?.append(URLQueryItem(name: "units", value: "metric"))
         }
-        let url = components?.url?.appendingPathComponent(ForecastCity.pathURLString) !! "Something went wrong"
+        let url = components?.url?.appendingPathComponent(self.pathURLString) !! "Something went wrong"
         return Resource(url: url)
     }
 }

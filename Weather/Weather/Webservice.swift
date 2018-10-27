@@ -90,6 +90,7 @@ final class Webservice: NSObject {
             }
         }
         else if let error = error {
+            print(error.localizedDescription)
             fatalError("FIXME")
         }
         else {
