@@ -37,13 +37,21 @@ extension UserDefaults {
             }
         }
     }
+
+    var temperatureUnit: String {
+        get {
+            return ((object(forKey: "TemperatureUnit") as? String) ?? (Locale.current.usesMetricSystem ? "º C" : "f"))
+        }
+        set {
+            set(newValue, forKey: "TemperatureUnit")
+        }
+    }
 }
 
 class HomeViewController: UIViewController {
 
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var tableView: UITableView!
-    private let webservice = Webservice()
     private let userDefaults = UserDefaults()
     var observer: NSKeyValueObservation?
     var cities: [City]?
@@ -67,13 +75,14 @@ class HomeViewController: UIViewController {
              self.cities = cities
         }
         else {
+            self.cities = []
             self.locationManager.requestWhenInUseAuthorization()
             if CLLocationManager.locationServicesEnabled() {
                 locationManager.requestLocation()
             }
         }
         observer = self.userDefaults.observe(\.cities, options: [.initial, .old, .new]) { (defaults, change) in
-            dump(change)
+//            dump(change)
             if let cities = change.newValue {
                 self.cities = cities
                 self.tableView.reloadData()
@@ -85,12 +94,32 @@ class HomeViewController: UIViewController {
         self.tableView.dataSource = self
 
         let gesture = UILongPressGestureRecognizer(target: self, action: #selector(addPin(sender:)))
-        gesture.minimumPressDuration = 0.5
         self.mapView.addGestureRecognizer(gesture)
+        self.mapView.delegate = self
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.addCitiesToMap()
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+
+    func addCitiesToMap() {
+        for city in self.cities ?? [] {
+            if let coordinnate = city.coordinates, let lat = coordinnate.lat, let lon = coordinnate.lon {
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = CLLocationCoordinate2D(latitude: lat,
+                                                               longitude: lon)
+                annotation.title = city.name ?? "-"
+                self.mapView.addAnnotation(annotation)
+            }
+        }
+    }
     @objc
     func addPin(sender: UILongPressGestureRecognizer) {
+        guard sender.state == .began else {
+            return
+        }
         let touchLocation = sender.location(in: self.mapView)
         let locationCoordinates = self.mapView.convert(touchLocation, toCoordinateFrom: self.mapView)
         let annotation = MKPointAnnotation()
@@ -98,9 +127,11 @@ class HomeViewController: UIViewController {
         let geocoder = CLGeocoder()
         let location = CLLocation(latitude: locationCoordinates.latitude, longitude: locationCoordinates.longitude)
         geocoder.reverseGeocodeLocation(location) { [unowned self] (placemarks, error) in
+
             guard let placemark = placemarks?.first, let stateName = placemark.administrativeArea else {
-                fatalError("FIXME")
+                return
             }
+
             let cityName = placemark.subAdministrativeArea ?? placemark.locality ?? "-"
             annotation.title = cityName
             annotation.subtitle = stateName
@@ -109,9 +140,24 @@ class HomeViewController: UIViewController {
             let coordinates = Coordinates(location: locationCoordinates)
             let city = City(name: cityName, coordinates: coordinates)
             self.cities?.append(city)
+            self.tableView.reloadData()
             self.userDefaults.cities = self.cities
         }
         
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? CityForecastViewController else {
+            return
+        }
+        guard let indexPath = tableView.indexPathForSelectedRow else {
+            return
+        }
+        guard let city = self.cities?[indexPath.row] else {
+            return
+        }
+
+        destination.city = city
     }
 }
 
@@ -130,19 +176,6 @@ extension HomeViewController: CLLocationManagerDelegate {
             self.userDefaults.cities = [city]
         }
 
-//        let locale = Locale.current
-//
-//        let resource = ForecastCity.resource(for: coordinates,
-//                                             units: SystemOfUnits(usesMetricSystem: locale.usesMetricSystem))
-//
-//        _ = self.webservice.load(resource) { result in
-//            switch result {
-//            case .success(let value):
-//                #warning("TODO")
-//            case .failure(let error):
-//                #warning("TODO")
-//            }
-//        }
     }
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -152,8 +185,18 @@ extension HomeViewController: CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        #warning("TODO")
-        print(error)
+        if let error = error as? CLError {
+            switch error {
+            case CLError.locationUnknown:
+                print("location unknown")
+            case CLError.denied:
+                print("denied")
+            default:
+                print("other Core Location error")
+            }
+        } else {
+            print("other error:", error.localizedDescription)
+        }
     }
 }
 
@@ -169,5 +212,35 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         }
         cell?.textLabel?.text = city.name
         return cell!
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "CityDetail", sender: self)
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("Deleted")
+
+            self.cities?.remove(at: indexPath.row)
+            self.userDefaults.cities = self.cities
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            let annotations = self.mapView.annotations
+            self.mapView.removeAnnotations(annotations)
+            self.addCitiesToMap()
+        }
+    }
+}
+
+extension HomeViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let foundCity = self.cities?.first(where: { city in
+            return city.coordinates?.lon == view.annotation?.coordinate.longitude &&
+                city.coordinates?.lat == view.annotation?.coordinate.latitude
+        })
+        guard let city = foundCity, let index = self.cities?.firstIndex(of: city)
+            else { return }
+        self.tableView.selectRow(at: IndexPath(row: index, section: 0), animated: false, scrollPosition: .middle)
+        self.performSegue(withIdentifier: "CityDetail", sender: self)
     }
 }

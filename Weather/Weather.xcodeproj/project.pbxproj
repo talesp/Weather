@@ -26,6 +26,10 @@
 		029D869F217B7C5300AF23D1 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029D869E217B7C5300AF23D1 /* Coordinates.swift */; };
 		029D86A1217B7F4500AF23D1 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029D86A0217B7F4500AF23D1 /* Webservice.swift */; };
 		029D86A4217B9E6D00AF23D1 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029D86A3217B9E6D00AF23D1 /* City.swift */; };
+		029D86A6217C07F900AF23D1 /* 5day_forecast.json in Resources */ = {isa = PBXBuildFile; fileRef = 029D86A5217C07F900AF23D1 /* 5day_forecast.json */; };
+		029D86A8217C085B00AF23D1 /* today_forecast.json in Resources */ = {isa = PBXBuildFile; fileRef = 029D86A7217C085B00AF23D1 /* today_forecast.json */; };
+		029D86AA217D5FD800AF23D1 /* CityForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029D86A9217D5FD800AF23D1 /* CityForecastViewController.swift */; };
+		029D86AC217D61A600AF23D1 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029D86AB217D61A600AF23D1 /* Forecast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0208EA04217E8A920081A41C /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		0208EA06217ECEA90081A41C /* Forecast+Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Forecast+Resource.swift"; sourceTree = "<group>"; };
 		029D866B217A961900AF23D1 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		029D866E217A961900AF23D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +66,9 @@
 		029D869E217B7C5300AF23D1 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		029D86A0217B7F4500AF23D1 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
 		029D86A3217B9E6D00AF23D1 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		029D86A5217C07F900AF23D1 /* 5day_forecast.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 5day_forecast.json; sourceTree = "<group>"; };
+		029D86A7217C085B00AF23D1 /* today_forecast.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = today_forecast.json; sourceTree = "<group>"; };
+		029D86A9217D5FD800AF23D1 /* CityForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityForecastViewController.swift; sourceTree = "<group>"; };
 		029D86AB217D61A600AF23D1 /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,7 +128,11 @@
 				029D869E217B7C5300AF23D1 /* Coordinates.swift */,
 				029D86A0217B7F4500AF23D1 /* Webservice.swift */,
 				029D86A3217B9E6D00AF23D1 /* City.swift */,
+				029D86A5217C07F900AF23D1 /* 5day_forecast.json */,
+				029D86A7217C085B00AF23D1 /* today_forecast.json */,
+				029D86A9217D5FD800AF23D1 /* CityForecastViewController.swift */,
 				029D86AB217D61A600AF23D1 /* Forecast.swift */,
+				0208EA04217E8A920081A41C /* TableViewCell.swift */,
 				0208EA06217ECEA90081A41C /* Forecast+Resource.swift */,
 			);
 			path = Weather;
@@ -227,6 +239,8 @@
 				029D8679217A961A00AF23D1 /* LaunchScreen.storyboard in Resources */,
 				029D8676217A961A00AF23D1 /* Assets.xcassets in Resources */,
 				029D8674217A961900AF23D1 /* Main.storyboard in Resources */,
+				029D86A6217C07F900AF23D1 /* 5day_forecast.json in Resources */,
+				029D86A8217C085B00AF23D1 /* today_forecast.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +258,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				029D86AA217D5FD800AF23D1 /* CityForecastViewController.swift in Sources */,
+				0208EA05217E8A920081A41C /* TableViewCell.swift in Sources */,
 				029D8695217AF12800AF23D1 /* HTTPStatusCode.swift in Sources */,
 				029D8699217B68D600AF23D1 /* ForecastItem+Resource.swift in Sources */,
 				029D86A1217B7F4500AF23D1 /* Webservice.swift in Sources */,
