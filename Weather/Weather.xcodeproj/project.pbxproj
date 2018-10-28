@@ -22,6 +22,9 @@
 		021C1DC121852556006F0CC6 /* Snow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021C1DC021852556006F0CC6 /* Snow.swift */; };
 		021C1DC321852567006F0CC6 /* Sys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021C1DC221852567006F0CC6 /* Sys.swift */; };
 		021C1DC521852583006F0CC6 /* Wind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021C1DC421852583006F0CC6 /* Wind.swift */; };
+		027E1D292185FE3700F89F4E /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027E1D282185FE3700F89F4E /* ViewConfiguration.swift */; };
+		027E1D2B2185FF3300F89F4E /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027E1D2A2185FF3300F89F4E /* UserDefaults.swift */; };
+		027E1D2D2185FF7300F89F4E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027E1D2C2185FF7300F89F4E /* MapViewController.swift */; };
 		029D866F217A961900AF23D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029D866E217A961900AF23D1 /* AppDelegate.swift */; };
 		029D8671217A961900AF23D1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029D8670217A961900AF23D1 /* HomeViewController.swift */; };
 		029D8674217A961900AF23D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 029D8672217A961900AF23D1 /* Main.storyboard */; };
@@ -71,6 +74,9 @@
 		021C1DC021852556006F0CC6 /* Snow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snow.swift; sourceTree = "<group>"; };
 		021C1DC221852567006F0CC6 /* Sys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sys.swift; sourceTree = "<group>"; };
 		021C1DC421852583006F0CC6 /* Wind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wind.swift; sourceTree = "<group>"; };
+		027E1D282185FE3700F89F4E /* ViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfiguration.swift; sourceTree = "<group>"; };
+		027E1D2A2185FF3300F89F4E /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		027E1D2C2185FF7300F89F4E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		029D866B217A961900AF23D1 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		029D866E217A961900AF23D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		029D8670217A961900AF23D1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				029D869A217B6A1000AF23D1 /* Optional.swift */,
+				027E1D2A2185FF3300F89F4E /* UserDefaults.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -221,6 +228,8 @@
 				021C1DAA21852301006F0CC6 /* Models */,
 				029D86A2217B9CE800AF23D1 /* Network */,
 				021C1DAF218523E6006F0CC6 /* Resources */,
+				027E1D282185FE3700F89F4E /* ViewConfiguration.swift */,
+				027E1D2C2185FF7300F89F4E /* MapViewController.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -357,6 +366,7 @@
 				029D86AA217D5FD800AF23D1 /* CityForecastViewController.swift in Sources */,
 				0208EA05217E8A920081A41C /* TableViewCell.swift in Sources */,
 				021C1DB121852452006F0CC6 /* Pod.swift in Sources */,
+				027E1D292185FE3700F89F4E /* ViewConfiguration.swift in Sources */,
 				029D8695217AF12800AF23D1 /* HTTPStatusCode.swift in Sources */,
 				021C1DC121852556006F0CC6 /* Snow.swift in Sources */,
 				029D8699217B68D600AF23D1 /* ForecastItem+Resource.swift in Sources */,
@@ -368,12 +378,14 @@
 				021C1DB521852494006F0CC6 /* Icon.swift in Sources */,
 				021C1DB7218524AB006F0CC6 /* WeatherCondition.swift in Sources */,
 				029D8691217AF0DA00AF23D1 /* HttpMethod.swift in Sources */,
+				027E1D2D2185FF7300F89F4E /* MapViewController.swift in Sources */,
 				029D8671217A961900AF23D1 /* HomeViewController.swift in Sources */,
 				021C1DC321852567006F0CC6 /* Sys.swift in Sources */,
 				021C1DC521852583006F0CC6 /* Wind.swift in Sources */,
 				021C1DB321852471006F0CC6 /* WeatherDescription.swift in Sources */,
 				021C1DBD2185252C006F0CC6 /* Weather.swift in Sources */,
 				021C1DB9218524DE006F0CC6 /* Clouds.swift in Sources */,
+				027E1D2B2185FF3300F89F4E /* UserDefaults.swift in Sources */,
 				029D866F217A961900AF23D1 /* AppDelegate.swift in Sources */,
 				029D868F217AEF3C00AF23D1 /* ForecastItem.swift in Sources */,
 				029D869F217B7C5300AF23D1 /* Coordinates.swift in Sources */,

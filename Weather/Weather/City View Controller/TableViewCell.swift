@@ -58,3 +58,14 @@ class TableViewCell: UITableViewCell {
         self.windLabel.text = "\(model.wind.cardinalDirection) \(numberFormatter.string(from: model.wind.speed as NSNumber) ?? "") m/s"
     }
 }
+
+extension TableViewCell: ViewConfiguration {
+    func buildViewHierarchy() {
+
+    }
+
+    func setupConstraints() {
+        
+    }
+
+}
