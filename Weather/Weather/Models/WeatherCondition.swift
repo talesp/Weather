@@ -12,6 +12,7 @@ enum WeatherCondition: String, Codable {
     case thunderstorm = "Thunderstorm"
     case drizzle = "Drizzle"
     case rain = "Rain"
+    case haze = "Haze"
     case snow = "Snow"
     case clear = "Clear"
     case clouds = "Clouds"

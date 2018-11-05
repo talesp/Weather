@@ -66,6 +66,7 @@ class CityForecastViewController: UIViewController {
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.allowsSelection = false
+        self.tableView.register(reusableCell: WeatherDetailCell.self)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -130,9 +131,7 @@ extension CityForecastViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastItem") as? TableViewCell else {
-            return UITableViewCell()
-        }
+        let cell: WeatherDetailCell = tableView.dequeueCell(for: indexPath)
         cell.setup(model: self.dataSource[indexPath.section][indexPath.row])
         return cell
     }
